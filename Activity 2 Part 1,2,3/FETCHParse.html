@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<!-- prepared by: Shahdad -->
+<head> <title> BTI425 </title>
+<body>
+
+<h1>Ajax --> JSON data</h1>
+
+<button type="button" onclick="loadDoc()">Parse JSON data</button>
+<br><br>
+<p id="demo"></p>
+
+<script>
+  
+function loadDoc() {
+  var url = "https://api.openweathermap.org/data/2.5/weather?q=Paris,France&appid=d75b8286c6ff5f318727f9f6325e90a0"
+  var res = fetch(url)
+  .then(response => response.json())
+  .then(data => document.getElementById("demo").innerHTML += "country name is: " + data.name + "<br>" +  "Temperature is: " + data.main.temp_max)
+  .catch(err => console.log('Request Failed', err));
+
+  var te = fetch(url)
+  .then(response => response.json())
+  .then(data => console.log(data))
+
+
+}
+</script>
+
+</body>
+</html>

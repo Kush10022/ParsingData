@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<!-- prepared by: Shahdad -->
+<head> <title> BTI425 </title>
+<body>
+
+<h1>Ajax --> JSON data</h1>
+
+<button type="button" onclick="loadDoc()">Parse JSON data</button>
+<br><br>
+<p id="demo"></p>
+
+<script>
+  
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  alert(1);
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=Paris,France&appid=d75b8286c6ff5f318727f9f6325e90a0&mode=xml", true);
+  xhttp.send();
+  alert(2);
+}
+ function myFunction(xml) {
+
+  var xmlData = xml.responseXML;
+  console.log(xmlData);
+
+  var output = xmlData.getElementsByTagName('temperature')[0].getAttribute('max');
+
+  console.log(output);
+
+  document.getElementById("demo").innerHTML = output;
+}
+</script>
+
+</body>
+</html>
